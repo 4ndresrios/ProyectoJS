@@ -1,55 +1,57 @@
-
-let valorPlatos = parseInt(prompt("Indique un valor del 1 al 100 para lavar los platos"));
-let valorBaño = parseInt(prompt("Indique un valor del 1 al 100 para limpiar el baño"));
-let valorCocinar = parseInt(prompt("Indique un valor del 1 al 100 para Cocinar"));
-let valorBarrer = parseInt(prompt("Indique un valor del 1 al 100 para Barrer"));
-let valorCama = parseInt(prompt("Indique un valor del 1 al 100 para hacer la cama"));
-let valorBasura = parseInt(prompt("Indique un valor del 1 al 100 para sacar la basura"));
 let dia = 1
-let puntosUs1 = 0
-let puntosUs2 = 0
-let puntosUs3 = 0
-let puntosUs4 = 0
-let usuarioUno
-let usuarioDos
-let usuarioTres
-let usuarioCuatro
 
-if((valorPlatos > 100) || (valorPlatos <= 0)){
+const usuarios = [{nombre:"",puntos:0},{nombre:"",puntos:0},{nombre:"",puntos:0},{nombre:"",puntos:0}];
+
+const tareas = [{nombre: "Lavar los platos", valor: 0},{nombre: "Limpiar el baño", valor: 0},{nombre: "Cocinar", valor:0},{nombre:"Barrer",valor:0},{nombre:"Hacer la cama",valor:0},{nombre:"Sacar la basura",valor:0}];
+
+tareas[0].valor = parseInt(prompt("Indique un valor del 1 al 100 para lavar los platos"));
+if((tareas[0].valor > 100) || (tareas[0].valor <= 0)){
     alert("Por favor ingrese un valor del 1 al 100");
+    tareas[0].valor = parseInt(prompt("Indique un valor del 1 al 100 para lavar los platos"));
 }else{
-    console.log("Lavar los platos = "+valorPlatos+"pts");
+    console.log("Lavar los platos = "+tareas[0].valor+"pts");
 }
-if((valorBaño > 100) || (valorBaño <= 0)){
+tareas[1].valor = parseInt(prompt("Indique un valor del 1 al 100 para limpiar el baño"));
+if((tareas[1].valor > 100) || (tareas[1].valor <= 0)){
     alert("Por favor ingrese un valor del 1 al 100");
+    tareas[1].valor = parseInt(prompt("Indique un valor del 1 al 100 para limpiar el baño"));
 }else{
-    console.log("Limpiar el baño = "+valorBaño+"pts");
+    console.log("Limpiar el baño = "+tareas[1].valor+"pts");
 }
-if((valorCocinar > 100) || (valorCocinar <= 0)){
+tareas[2].valor = parseInt(prompt("Indique un valor del 1 al 100 para Cocinar"));
+if((tareas[2].valor > 100) || (tareas[2].valor <= 0)){
     alert("Por favor ingrese un valor del 1 al 100");
+    tareas[2].valor = parseInt(prompt("Indique un valor del 1 al 100 para Cocinar"));
 }else{
-    console.log("Cocinar = "+valorCocinar+"pts");
+    console.log("Cocinar = "+tareas[2].valor+"pts");
 }
-if((valorBarrer > 100) || (valorBarrer <= 0)){
+tareas[3].valor = parseInt(prompt("Indique un valor del 1 al 100 para Barrer"));
+if((tareas[3].valor > 100) || (tareas[3].valor <= 0)){
     alert("Por favor ingrese un valor del 1 al 100");
+    tareas[3].valor = parseInt(prompt("Indique un valor del 1 al 100 para Barrer"));
 }else{
-    console.log("Barrer = "+valorBarrer+"pts");
+    console.log("Barrer = "+tareas[3].valor+"pts");
 }
-if((valorCama > 100) || (valorCama <= 0)){
+tareas[4].valor = parseInt(prompt("Indique un valor del 1 al 100 para hacer la cama"));
+if((tareas[4].valor > 100) || (tareas[4].valor <= 0)){
     alert("Por favor ingrese un valor del 1 al 100");
+    tareas[4].valor = parseInt(prompt("Indique un valor del 1 al 100 para hacer la cama"));
 }else{
-    console.log("Hacer la cama = "+valorCama+"pts");
+    console.log("Hacer la cama = "+tareas[4].valor+"pts");
 }
-if((valorBasura > 100) || (valorBasura <= 0)){
+tareas[5].valor = parseInt(prompt("Indique un valor del 1 al 100 para sacar la basura"));
+if((tareas[5].valor > 100) || (tareas[5].valor <= 0)){
     alert("Por favor ingrese un valor del 1 al 100");
+    tareas[5].valor = parseInt(prompt("Indique un valor del 1 al 100 para sacar la basura"));
 }else{
-    console.log("Sacar la basura = "+valorBasura+"pts");
+    console.log("Sacar la basura = "+tareas[5].valor+"pts");
 }
 
 let habitantes = prompt("¿Cuantas personas viven en la casa?");
 switch(habitantes){
     case "1":
         alert("No tiene mucho sentido que dividas las tareas");
+        habitantes = prompt("¿Cuantas personas viven en la casa?");
         break;
     case "2":
         familiaDeDos()
@@ -65,141 +67,143 @@ switch(habitantes){
         break;
     default:
         alert("Es mas de lo que podemos manejar");
+        habitantes = prompt("¿Cuantas personas viven en la casa?");
         break;
+        
 }
 
 function familiaDeDos(){
-    usuarioUno = prompt("Ingresa el nombre del primer miembro");
-    usuarioDos = prompt("Ingresa el nombre del segundo miembro");
-    console.log("Miembro 1: "+usuarioUno);
-    console.log("Miembro 2: "+usuarioDos);
+    usuarios[0].nombre = prompt("Ingresa el nombre del primer miembro");
+    usuarios[1].nombre = prompt("Ingresa el nombre del segundo miembro");
+    console.log("Miembro 1: "+usuarios[0].nombre);
+    console.log("Miembro 2: "+usuarios[1].nombre);
 }
 function familiaDeTres(){
-    usuarioTres = prompt("Ingresa el nombre del tercer miembro");
-    console.log("Miembro 3: "+usuarioTres);
+    usuarios[2].nombre = prompt("Ingresa el nombre del tercer miembro");
+    console.log("Miembro 3: "+usuarios[2].nombre);
 }
 function familiaDeCuatro(){
-    usuarioCuatro = prompt("Ingresa el nombre del cuarto miembro");
-    console.log("Miembro 4: "+usuarioCuatro);
+    usuarios[3].nombre = prompt("Ingresa el nombre del cuarto miembro");
+    console.log("Miembro 4: "+usuarios[3].nombre);
 }
 
 while(dia<=1){
     console.log("Dia "+dia)
     let lavarPlatos = prompt("¿Quien lavo los platos hoy?")
     switch(lavarPlatos){
-        case usuarioUno:
-            puntosUs1+=valorPlatos;
+        case usuarios[0].nombre:
+            usuarios[0].puntos+=tareas[0].valor;
             break;
-        case usuarioDos:
-            puntosUs2+=valorPlatos;
+        case usuarios[1].nombre:
+            usuarios[1].puntos+=tareas[0].valor;
             break;
-        case usuarioTres:
-            puntosUs3+=valorPlatos;
+        case usuarios[2].nombre:
+            usuarios[2].puntos+=tareas[0].valor;
             break;
-        case usuarioCuatro:
-            puntosUs4+=valorPlatos;
+        case usuarios[3].nombre:
+            usuarios[3].puntos+=tareas[0].valor;
             break;
         default:
             break;
     }
     let limpiarBaño = prompt("¿Quien limpio el baño hoy?")
     switch(limpiarBaño){
-        case usuarioUno:
-            puntosUs1+=valorBaño;
+        case usuarios[0].nombre:
+            usuarios[0].puntos+=tareas[1].valor;
             break;
-        case usuarioDos:
-            puntosUs2+=valorBaño;
+        case usuarios[1].nombre:
+            usuarios[1].puntos+=tareas[1].valor;
             break;
-        case usuarioTres:
-            puntosUs3+=valorBaño;
+        case usuarios[2].nombre:
+            usuarios[2].puntos+=tareas[1].valor;
             break;
-        case usuarioCuatro:
-            puntosUs4+=valorBaño;
+        case usuarios[3].nombre:
+            usuarios[3].puntos+=tareas[1].valor;
             break;
         default:
             break;
     }
     let cocinar = prompt("¿Quien cocino hoy?")
     switch(cocinar){
-        case usuarioUno:
-            puntosUs1+=valorCocinar;
+        case usuarios[0].nombre:
+            usuarios[0].puntos+=tareas[2].valor;
             break;
-        case usuarioDos:
-            puntosUs2+=valorCocinar;
+        case usuarios[1].nombre:
+            usuarios[1].puntos+=tareas[2].valor;
             break;
-        case usuarioTres:
-            puntosUs3+=valorCocinar;
+        case usuarios[2].nombre:
+            usuarios[2].puntos+=tareas[2].valor;
             break;
-        case usuarioCuatro:
-            puntosUs4+=valorCocinar;
+        case usuarios[3].nombre:
+            usuarios[3].puntos+=tareas[2].valor;
             break;
         default:
             break;
     }
     let barrer = prompt("¿Quien barrió hoy?")
     switch(barrer){
-        case usuarioUno:
-            puntosUs1+=valorBarrer;
+        case usuarios[0].nombre:
+            usuarios[0].puntos+=tareas[3].valor;
             break;
-        case usuarioDos:
-            puntosUs2+=valorBarrer;
+        case usuarios[1].nombre:
+            usuarios[1].puntos+=tareas[3].valor;
             break;
-        case usuarioTres:
-            puntosUs3+=valorBarrer;
+        case usuarios[2].nombre:
+            usuarios[2].puntos+=tareas[3].valor;
             break;
-        case usuarioCuatro:
-            puntosUs4+=valorBarrer;
+        case usuarios[3].nombre:
+            usuarios[3].puntos+=tareas[3].valor;
             break;
         default:
             break;
     }
     let hacerCama = prompt("¿Quien hizo la cama hoy?")
     switch(hacerCama){
-        case usuarioUno:
-            puntosUs1+=valorCama;
+        case usuarios[0].nombre:
+            usuarios[0].puntos+=tareas[4].valor;
             break;
-        case usuarioDos:
-            puntosUs2+=valorCama;
+        case usuarios[1].nombre:
+            usuarios[1].puntos+=tareas[4].valor;
             break;
-        case usuarioTres:
-            puntosUs3+=valorCama;
+        case usuarios[2].nombre:
+            usuarios[2].puntos+=tareas[4].valor;
             break;
-        case usuarioCuatro:
-            puntosUs4+=valorCama;
+        case usuarios[3].nombre:
+            usuarios[3].puntos+=tareas[4].valor;
             break;
         default:
             break;
     }
     let sacarBasura = prompt("¿Quien saco la basura hoy?")
     switch(sacarBasura){
-        case usuarioUno:
-            puntosUs1+=valorBasura;
+        case usuarios[0].nombre:
+            usuarios[0].puntos+=tareas[5].valor;
             break;
-        case usuarioDos:
-            puntosUs2+=valorBasura;
+        case usuarios[1].nombre:
+            usuarios[1].puntos+=tareas[5].valor;
             break;
-        case usuarioTres:
-            puntosUs3+=valorBasura;
+        case usuarios[2].nombre:
+            usuarios[2].puntos+=tareas[5].valor;
             break;
-        case usuarioCuatro:
-            puntosUs4+=valorBasura;
+        case usuarios[3].nombre:
+            usuarios[3].puntos+=tareas[5].valor;
             break;
         default:
             break;
     }
 
     if(habitantes==2){
-        console.log(usuarioUno+" tiene "+puntosUs1+"pts")
-        console.log(usuarioDos+" tiene "+puntosUs2+"pts")
+        console.log(usuarios[0].nombre+" tiene "+usuarios[0].puntos+"pts")
+        console.log(usuarios[1].nombre+" tiene "+usuarios[1].puntos+"pts")
     }else if(habitantes==3){
-        console.log(usuarioUno+" tiene "+puntosUs1+"pts")
-        console.log(usuarioDos+" tiene "+puntosUs2+"pts")
-        console.log(usuarioTres+" tiene "+puntosUs3+"pts")
+        console.log(usuarios[0].nombre+" tiene "+usuarios[0].puntos+"pts")
+        console.log(usuarios[1].nombre+" tiene "+usuarios[1].puntos+"pts")
+        console.log(usuarios[2].nombre+" tiene "+usuarios[2].puntos+"pts")
     }else if(habitantes==4){
-        console.log(usuarioUno+" tiene "+puntosUs1+"pts")
-        console.log(usuarioDos+" tiene "+puntosUs2+"pts")
-        console.log(usuarioTres+" tiene "+puntosUs3+"pts")
-        console.log(usuarioCuatro+" tiene "+puntosUs4+"pts")
+        console.log(usuarios[0].nombre+" tiene "+usuarios[0].puntos+"pts")
+        console.log(usuarios[1].nombre+" tiene "+usuarios[1].puntos+"pts")
+        console.log(usuarios[2].nombre+" tiene "+usuarios[2].puntos+"pts")
+        console.log(usuarios[3].nombre+" tiene "+usuarios[3].puntos+"pts")
     }
     
 
