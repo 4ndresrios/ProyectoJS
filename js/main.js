@@ -47,6 +47,9 @@ if((tareas[5].valor > 100) || (tareas[5].valor <= 0)){
     console.log("Sacar la basura = "+tareas[5].valor+"pts");
 }
 
+const valorCasa = tareas.reduce((acc,el) => acc+el.valor,0);
+console.log("limpiar la casa vale "+valorCasa+"pts");
+
 let habitantes = prompt("¿Cuantas personas viven en la casa?");
 switch(habitantes){
     case "1":
