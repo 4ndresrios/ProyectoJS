@@ -4,47 +4,53 @@ const usuarios = [{nombre:"",puntos:0},{nombre:"",puntos:0},{nombre:"",puntos:0}
 
 const tareas = [{nombre: "Lavar los platos", valor: 0},{nombre: "Limpiar el baño", valor: 0},{nombre: "Cocinar", valor:0},{nombre:"Barrer",valor:0},{nombre:"Hacer la cama",valor:0},{nombre:"Sacar la basura",valor:0}];
 
-tareas[0].valor = document.getElementById("lavarPlatos").value;
+tareas[0].valor = parseInt(prompt("Indique un valor del 1 al 100 para lavar los platos"));
 if((tareas[0].valor > 100) || (tareas[0].valor <= 0)){
-    /* alert("Por favor ingrese un valor del 1 al 100"); */
+    alert("Por favor ingrese un valor del 1 al 100");
+    tareas[0].valor = parseInt(prompt("Indique un valor del 1 al 100 para lavar los platos"));
 }else{
-    document.write("Lavar los platos = "+tareas[0].valor+"pts");
+    console.log("Lavar los platos = "+tareas[0].valor+"pts");
 }
-tareas[1].valor = document.getElementById("limpiarBano").value;
+tareas[1].valor = parseInt(prompt("Indique un valor del 1 al 100 para limpiar el baño"));
 if((tareas[1].valor > 100) || (tareas[1].valor <= 0)){
-    /* alert("Por favor ingrese un valor del 1 al 100"); */
+    alert("Por favor ingrese un valor del 1 al 100");
+    tareas[1].valor = parseInt(prompt("Indique un valor del 1 al 100 para limpiar el baño"));
 }else{
-    document.write("Limpiar el baño = "+tareas[1].valor+"pts");
+    console.log("Limpiar el baño = "+tareas[1].valor+"pts");
 }
-tareas[2].valor = document.getElementById("cocinar").value;
+tareas[2].valor = parseInt(prompt("Indique un valor del 1 al 100 para Cocinar"));
 if((tareas[2].valor > 100) || (tareas[2].valor <= 0)){
-    /* alert("Por favor ingrese un valor del 1 al 100"); */
+    alert("Por favor ingrese un valor del 1 al 100");
+    tareas[2].valor = parseInt(prompt("Indique un valor del 1 al 100 para Cocinar"));
 }else{
-    document.write("Cocinar = "+tareas[2].valor+"pts");
+    console.log("Cocinar = "+tareas[2].valor+"pts");
 }
-tareas[3].valor = document.getElementById("barrer").value;
+tareas[3].valor = parseInt(prompt("Indique un valor del 1 al 100 para Barrer"));
 if((tareas[3].valor > 100) || (tareas[3].valor <= 0)){
-    /* alert("Por favor ingrese un valor del 1 al 100"); */
+    alert("Por favor ingrese un valor del 1 al 100");
+    tareas[3].valor = parseInt(prompt("Indique un valor del 1 al 100 para Barrer"));
 }else{
-    document.write("Barrer = "+tareas[3].valor+"pts");
+    console.log("Barrer = "+tareas[3].valor+"pts");
 }
-tareas[4].valor = document.getElementById("hacerCama").value;
+tareas[4].valor = parseInt(prompt("Indique un valor del 1 al 100 para hacer la cama"));
 if((tareas[4].valor > 100) || (tareas[4].valor <= 0)){
-    /* alert("Por favor ingrese un valor del 1 al 100"); */
+    alert("Por favor ingrese un valor del 1 al 100");
+    tareas[4].valor = parseInt(prompt("Indique un valor del 1 al 100 para hacer la cama"));
 }else{
-    document.write("Hacer la cama = "+tareas[4].valor+"pts");
+    console.log("Hacer la cama = "+tareas[4].valor+"pts");
 }
-tareas[5].valor = document.getElementById("basura").value;
+tareas[5].valor = parseInt(prompt("Indique un valor del 1 al 100 para sacar la basura"));
 if((tareas[5].valor > 100) || (tareas[5].valor <= 0)){
-    /* alert("Por favor ingrese un valor del 1 al 100"); */
+    alert("Por favor ingrese un valor del 1 al 100");
+    tareas[5].valor = parseInt(prompt("Indique un valor del 1 al 100 para sacar la basura"));
 }else{
-    document.write("Sacar la basura = "+tareas[5].valor+"pts");
+    console.log("Sacar la basura = "+tareas[5].valor+"pts");
 }
 
 const valorCasa = tareas.reduce((acc,el) => acc+el.valor,0);
-console.log("limpiar toda la casa vale "+valorCasa+"pts");
+console.log("limpiar la casa vale "+valorCasa+"pts");
 
-let habitantes = document.getElementById("personas").value;
+let habitantes = prompt("¿Cuantas personas viven en la casa?");
 switch(habitantes){
     case "1":
         alert("No tiene mucho sentido que dividas las tareas");
@@ -64,7 +70,9 @@ switch(habitantes){
         break;
     default:
         alert("Es mas de lo que podemos manejar");
+        habitantes = prompt("¿Cuantas personas viven en la casa?");
         break;
+        
 }
 
 function familiaDeDos(){
@@ -204,6 +212,8 @@ while(dia<=1){
 
 dia+=1
 }
+
+
 
 
 

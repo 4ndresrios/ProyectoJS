@@ -1,15 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<html style="font-size: 16px;">
+  <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Medidor de tareas del hogar</h1> 
-    <h3>Vamos a controlar que el cuidado de la casa sea equitativo entre todos los que la habitan.</h3>
-
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <title>Medidor de tareas del hogar</title>
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+  <body>
+    <section>
+      <h2>Medidor de tareas del hogar</h2>
+        <form>
+          <div>
+            <label for="lavarPlatos">Lavar los platos</label>
+            <input type="number" placeholder="valor del 1 al 100" id="lavarPlatos" name="lavarPlatos">
+          </div>
+          <div>
+            <label for="limpiarBano">Limpiar el baño</label>
+            <input type="number" placeholder="valor del 1 al 100" id="limpiarBano" name="limpiarBano" required="">
+          </div>
+          <div>
+            <label for="cocinar">Cocinar</label>
+            <input type="number" placeholder="valor del 1 al 100" id="cocinar" name="cocinar" required="">
+          </div>
+          <div>
+            <label for="barrer">Barrer</label>
+            <input type="number" placeholder="valor del 1 al 100" id="barrer" name="barrer" required="">
+          </div>
+          <div>
+            <label for="hacerCama">Hacer la cama</label>
+            <input type="number" placeholder="valor del 1 al 100" id="hacerCama" name="hacerCama" required="">
+          </div>
+          <div>
+            <label for="basura">Sacar la basura</label>
+            <input type="number" placeholder="valor del 1 al 100" id="basura" name="basura" required="">
+          </div>
+          <div>
+            <label for="personas">¿Cuantas personas viven en la casa?</label>
+            <input type="number" placeholder="" id="personas" name="personas" required="">
+          </div>
+          <div>
+            <input type="submit" value="submit">
+          </div>
+        </form>
+    </section>
     <script src="./js/main.js"></script>
-</body>
+    <footer></footer>
+  </body>
 </html>
