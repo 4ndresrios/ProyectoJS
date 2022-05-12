@@ -2,38 +2,41 @@ let dia = 1
 
 const usuarios = [{nombre:"",puntos:0},{nombre:"",puntos:0},{nombre:"",puntos:0},{nombre:"",puntos:0}];
 
-const tareas = [{nombre: "Lavar los platos", valor: 0},{nombre: "Limpiar el baño", valor: 0},{nombre: "Cocinar", valor:0},{nombre:"Barrer",valor:0},{nombre:"Hacer la cama",valor:0},{nombre:"Sacar la basura",valor:0}];
+/* const tareas = [{nombre: "Lavar los platos", valor: 0},{nombre: "Limpiar el baño", valor: 0},{nombre: "Cocinar", valor:0},{nombre:"Barrer",valor:0},{nombre:"Hacer la cama",valor:0},{nombre:"Sacar la basura",valor:0}]; */
+
+let LavarPlatosTarea = document.getElementById("lavarPlatos").value;
 
 const formulario = document.querySelector("#formulario");
 
 formulario.addEventListener("submit", cargarValores);
 
 function cargarValores(evt){
-    tareas[0].valor = document.getElementById("lavarPlatos").value;
+    /* tareas[0].valor = document.getElementById("lavarPlatos").value;
     tareas[1].valor = document.getElementById("limpiarBano").value;
     tareas[2].valor = document.getElementById("cocinar").value;
     tareas[3].valor = document.getElementById("barrer").value;
     tareas[4].valor = document.getElementById("hacerCama").value;
-    tareas[5].valor = document.getElementById("basura").value;
+    tareas[5].valor = document.getElementById("basura").value; */
     evt.preventDefault();
 }
 
 const resultado1 = document.getElementById("resultado1")
-const resultado2 = document.getElementById("resultado2")
+/* const resultado2 = document.getElementById("resultado2")
 const resultado3 = document.getElementById("resultado3")
 const resultado4 = document.getElementById("resultado4")
 const resultado5 = document.getElementById("resultado5")
 const resultado6 = document.getElementById("resultado6")
-const resultado7 = document.getElementById("resultado7")
+const resultado7 = document.getElementById("resultado7") */
 
 function res1() {
-    if((tareas[0].valor > 100) || (tareas[0].valor <= 0)){
+    /* if((tareas[0].valor > 100) || (tareas[0].valor <= 0)){ */
+    if((LavarPlatosTarea > 100) || (LavarPlatosTarea <= 0)){
         return () => resultado1.textContent("Por favor ingrese un valor del 1 al 100");
     }else{
-        return () => resultado1.textContent(`Lavar los platos ${tareas[0].valor}pts`);
+        return () => resultado1.textContent(`Lavar los platos ${LavarPlatosTarea}pts`);
     }
 }
-function res2() {
+/* function res2() {
     if((tareas[1].valor > 100) || (tareas[1].valor <= 0)){
         return () => resultado2.textContent("Por favor ingrese un valor del 1 al 100");
     }else{
@@ -67,10 +70,10 @@ function res6() {
     }else{
         return () => resultado6.textContent(`Sacar la basura ${tareas[5].valor}pts`);
     }
-}
+} */
 
-const valorCasa = tareas.reduce((acc,el) => acc+el.valor,0);
-console.log("limpiar toda la casa vale "+valorCasa+"pts");
+/* const valorCasa = tareas.reduce((acc,el) => acc+el.valor,0);
+console.log("limpiar toda la casa vale "+valorCasa+"pts"); */
 
 let habitantes = document.getElementById("personas").value;
 switch(habitantes){
@@ -206,21 +209,21 @@ while(dia<=1){
     let lavarPlatos = document.getElementById("platos").value;
     switch(lavarPlatos){
         case usuarios[0].nombre:
-            usuarios[0].puntos+=tareas[0].valor;
+            usuarios[0].puntos+=LavarPlatosTarea;
             break;
         case usuarios[1].nombre:
-            usuarios[1].puntos+=tareas[0].valor;
+            usuarios[1].puntos+=LavarPlatosTarea;
             break;
         case usuarios[2].nombre:
-            usuarios[2].puntos+=tareas[0].valor;
+            usuarios[2].puntos+=LavarPlatosTarea;
             break;
         case usuarios[3].nombre:
-            usuarios[3].puntos+=tareas[0].valor;
+            usuarios[3].puntos+=LavarPlatosTarea;
             break;
         default:
             break;
     }
-    let limpiarBaño = document.getElementById("baño").value;
+    /* let limpiarBaño = document.getElementById("baño").value;
     switch(limpiarBaño){
         case usuarios[0].nombre:
             usuarios[0].puntos+=tareas[1].valor;
@@ -304,7 +307,7 @@ while(dia<=1){
             break;
         default:
             break;
-    }
+    } */
 
     if(habitantes==2){
         console.log(usuarios[0].nombre+" tiene "+usuarios[0].puntos+"pts")
