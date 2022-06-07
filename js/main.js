@@ -14,22 +14,40 @@ let botonNombres = document.getElementById("botonMiembros");
 let quienHizo = document.getElementById("quienHizo");
 let asignarLasTareas = document.getElementById("asignarTareas");
 let puntuacionDiaria = document.getElementById("puntuacionDiaria");
+let section = document.getElementById("section");
+let section2 = document.getElementById("section2");
+let formulario = document.getElementById("formulario");
+const resultadoMiembro1 = document.getElementById("resultadoMiembro1");
+const resultadoMiembro2 = document.getElementById("resultadoMiembro2");
+const resultadoMiembro3 = document.getElementById("resultadoMiembro3");
+const resultadoMiembro4 = document.getElementById("resultadoMiembro4");
 const resultadoMiembro0 = document.getElementById("resultadoMiembro0");
 const resultados = document.getElementById("resultados")
 let usuarios = [{},{},{},{}];
-const tareas = [{nombre: "Lavar los platos", valor: 0},
-                {nombre: "Limpiar el baño", valor: 0},
-                {nombre: "Cocinar", valor:0},
-                {nombre:"Barrer",valor:0},
-                {nombre:"Hacer la cama",valor:0},
-                {nombre:"Sacar la basura",valor:0}
-            ];
+let tareas = [{},{},{},{},{},{}];
+console.log(tareas)
+const cargarTareasJSON = ()=>{
+    fetch("json/datos.json")
+        .then((res)=>{
+            console.log(res)
+            return res.json()
+        })
+        .then((datos)=>{
+            tareas = datos
+            console.log(tareas)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+}
 const cargar = document.getElementById("cargar");
+LavarPlatosTarea.addEventListener("click", cargarTareasJSON);
 cargar.addEventListener("click", cargarValores);
 
 function cargarValores(evt){
     evt.preventDefault();
     limpiarHTML()
+    borrarForm()
     let valorPlatos = Number(LavarPlatosTarea.value)
     tareas[0].valor = valorPlatos;
     let valorBano = Number(limpiarBanoTarea.value)
@@ -44,7 +62,8 @@ function cargarValores(evt){
     tareas[5].valor = valorBasura;
     const valorCasa = tareas.reduce((acc,el) => acc+el.valor,0);
     Swal.fire(`Limpiar toda la casa vale ${valorCasa}pts.`)
-    resultados.innerHTML = `Lavar los platos ${tareas[0].valor}pts.<br>Limpiar el Baño ${tareas[1].valor}pts.<br>Cocinar ${tareas[2].valor}pts.<br>Barrer ${tareas[3].valor}pts.<br>Hacer la cama ${tareas[4].valor}pts.<br>sacar la basura ${tareas[5].valor}pts.`
+    resultados.innerHTML = `Lavar los platos ${tareas[0].valor}pts. - Limpiar el Baño ${tareas[1].valor}pts.<br>Cocinar ${tareas[2].valor}pts. - Barrer ${tareas[3].valor}pts.<br>Hacer la cama ${tareas[4].valor}pts. - sacar la basura ${tareas[5].valor}pts.`
+    resultados.className = "resultados"
     switchHabitantes(habitantes.value)
     const ingresarMiembros = document.getElementById("nombres");
     ingresarMiembros.addEventListener("click", cargarDatos);
@@ -55,32 +74,33 @@ function cargarValores(evt){
         let nombreMiembro2 = document.getElementById("miembro2");
         let nombreMiembro3 = document.getElementById("miembro3");
         let nombreMiembro4 = document.getElementById("miembro4");
-        const resultadoMiembro1 = document.getElementById("resultadoMiembro1");
-        const resultadoMiembro2 = document.getElementById("resultadoMiembro2");
-        const resultadoMiembro3 = document.getElementById("resultadoMiembro3");
-        const resultadoMiembro4 = document.getElementById("resultadoMiembro4");
         if(nombreMiembro1 != null) {
             usuarios[0].nombre = nombreMiembro1.value
             usuarios[0].valor = 0
+            resultadoMiembro1.className = "resultados"
             resultadoMiembro1.textContent = `Miembro 1: ${usuarios[0].nombre}`;
         }
         if(nombreMiembro2 != null) {
             usuarios[1].nombre = nombreMiembro2.value
             usuarios[1].valor = 0
+            resultadoMiembro2.className = "resultados"
             resultadoMiembro2.textContent = `Miembro 2: ${usuarios[1].nombre}`;
         }
         if(nombreMiembro3 != null) {
             usuarios[2].nombre = nombreMiembro3.value
             usuarios[2].valor = 0
+            resultadoMiembro3.className = "resultados"
             resultadoMiembro3.textContent = `Miembro 3: ${usuarios[2].nombre}`;
         }
         if(nombreMiembro4 != null) {
             usuarios[3].nombre = nombreMiembro4.value
             usuarios[3].valor = 0
+            resultadoMiembro4.className = "resultados"
             resultadoMiembro4.textContent = `Miembro 4: ${usuarios[3].nombre}`;
         }
         quienLoHizo()
         asignarTareas()
+        borrarForm2()
         const darTareas = document.getElementById("asignar");
         darTareas.addEventListener("click", cargarTareas);
         function cargarTareas (evt) {
@@ -104,11 +124,19 @@ function cargarValores(evt){
             }else if(habitantes.value=="4"){
                 puntuacionDiaria.innerHTML = `${usuarios[0].nombre} tiene ${usuarios[0].valor}pts <br> ${usuarios[1].nombre} tiene ${usuarios[1].valor}pts <br> ${usuarios[2].nombre} tiene ${usuarios[2].valor}pts <br> ${usuarios[3].nombre} tiene ${usuarios[3].valor}pts`
             }
+            Swal.fire(puntuacionDiaria)
             const usuariosJSON = JSON.stringify(usuarios);
             localStorage.setItem("usuarios", usuariosJSON);
             console.log(usuarios)
         }
     }
+}
+function borrarForm (){
+    section = section.removeChild(formulario)
+    section = document.getElementById("section");
+}
+function borrarForm2 (){
+    section = section.removeChild(section2)
 }
 function limpiarHTML(){
     while(resultadoMiembro0.textContent!=""){
@@ -165,6 +193,7 @@ const switchHabitantes = (habitantes) => {
 }
 function familiaDeDos(){
     const divMiembro1 = document.createElement("div");
+    divMiembro1.className = "cuadro"
 
     const label1 = document.createElement("label");
     label1.for = "miembro1";
@@ -175,14 +204,12 @@ function familiaDeDos(){
     input1.id = "miembro1";
     input1.name = "miembro1";
 
-    const resMiembro1 = document.createElement("div");
-    resMiembro1.id = "resultadoMiembro1";
 
     divMiembro1.appendChild(label1)
     divMiembro1.appendChild(input1)
-    divMiembro1.appendChild(resMiembro1)
 
     const divMiembro2 = document.createElement("div")
+    divMiembro2.className = "cuadro"
 
     const label2 = document.createElement("label");
     label2.for = "miembro2";
@@ -193,18 +220,16 @@ function familiaDeDos(){
     input2.id = "miembro2";
     input2.name = "miembro2";
 
-    const resMiembro2 = document.createElement("div");
-    resMiembro2.id = "resultadoMiembro2";
 
     divMiembro2.appendChild(label2)
     divMiembro2.appendChild(input2)
-    divMiembro2.appendChild(resMiembro2)
 
     miembro1.appendChild(divMiembro1);
     miembro2.appendChild(divMiembro2);
 }
 function familiaDeTres(){
     const divMiembro3 = document.createElement("div")
+    divMiembro3.className = "cuadro"
 
     const label3 = document.createElement("label");
     label3.for = "miembro3";
@@ -215,12 +240,8 @@ function familiaDeTres(){
     input3.id = "miembro3";
     input3.name = "miembro3";
 
-    const resMiembro3 = document.createElement("div");
-    resMiembro3.id = "resultadoMiembro3";
-
     divMiembro3.appendChild(label3)
     divMiembro3.appendChild(input3)
-    divMiembro3.appendChild(resMiembro3)
 
     
 
@@ -228,6 +249,7 @@ function familiaDeTres(){
 }
 function familiaDeCuatro(){
     const divMiembro4 = document.createElement("div")
+    divMiembro4.className = "cuadro"
 
     const label4 = document.createElement("label");
     label4.for = "miembro4";
@@ -238,12 +260,8 @@ function familiaDeCuatro(){
     input4.id = "miembro4";
     input4.name = "miembro4";
 
-    const resMiembro4 = document.createElement("div");
-    resMiembro4.id = "resultadoMiembro4";
-
     divMiembro4.appendChild(label4)
     divMiembro4.appendChild(input4)
-    divMiembro4.appendChild(resMiembro4)
 
 
     miembro4.appendChild(divMiembro4);
@@ -251,6 +269,7 @@ function familiaDeCuatro(){
 function cargarNombres() {
     const botonMiembros = document.createElement("div");
     const boton = document.createElement("input");
+    boton.className = "boton";
     boton.type = "submit";
     boton.id = "nombres"
     boton.value = "Cargar Miembros";
@@ -260,6 +279,7 @@ function cargarNombres() {
 }
 function quienLoHizo() {
     const divQuienPlatos = document.createElement("div");
+    divQuienPlatos.className = "cuadro"
     const labelPlatos = document.createElement("label");
     labelPlatos.for = "quienPlatos";
     labelPlatos.textContent = "¿Quién lavo los platos hoy?";
@@ -271,6 +291,7 @@ function quienLoHizo() {
     divQuienPlatos.appendChild(inputPlatos);
 
     const divQuienBano = document.createElement("div");
+    divQuienBano.className = "cuadro"
     const labelBano = document.createElement("label");
     labelBano.for = "quienBano";
     labelBano.textContent = "¿Quién limpio el baño hoy?";
@@ -282,6 +303,7 @@ function quienLoHizo() {
     divQuienBano.appendChild(inputBano);
 
     const divQuienCocina = document.createElement("div");
+    divQuienCocina.className = "cuadro"
     const labelCocina = document.createElement("label");
     labelCocina.for = "quienCocina";
     labelCocina.textContent = "¿Quién cocinó hoy?";
@@ -293,6 +315,7 @@ function quienLoHizo() {
     divQuienCocina.appendChild(inputCocina);
 
     const divQuienBarre = document.createElement("div");
+    divQuienBarre.className = "cuadro"
     const labelBarre = document.createElement("label");
     labelBarre.for = "quienBarre";
     labelBarre.textContent = "¿Quién barrió hoy?";
@@ -304,6 +327,7 @@ function quienLoHizo() {
     divQuienBarre.appendChild(inputBarre);
 
     const divQuienCama = document.createElement("div");
+    divQuienCama.className = "cuadro"
     const labelCama = document.createElement("label");
     labelCama.for = "quienCama";
     labelCama.textContent = "¿Quién hizo la cama hoy?";
@@ -315,6 +339,7 @@ function quienLoHizo() {
     divQuienCama.appendChild(inputCama);
 
     const divQuienBasura = document.createElement("div");
+    divQuienBasura.className = "cuadro"
     const labelBasura = document.createElement("label");
     labelBasura.for = "quienBasura";
     labelBasura.textContent = "¿Quién sacó la basura hoy?";
@@ -335,6 +360,7 @@ function quienLoHizo() {
 function asignarTareas() {
     const asignar = document.createElement("div");
     const botonAsignar = document.createElement("input");
+    botonAsignar.className = "boton"
     botonAsignar.type = "submit";
     botonAsignar.id = "asignar"
     botonAsignar.value = "Asignar Tareas";

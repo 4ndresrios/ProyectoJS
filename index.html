@@ -5,61 +5,74 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <title>Medidor de tareas del hogar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
   </head>
   <body>
-    <section>
-      <h2>Medidor de tareas del hogar</h2>
-        <form id="formulario" action="">
-          <div>
+    <section id="section" class="sec1">
+      <h1>Medidor de tareas del hogar</h1>
+        <form id="formulario" action="" class="form">
+          <div class="cuadro">
             <label for="lavarPlatos">Lavar los platos</label>
-            <input type="number" placeholder="valor del 1 al 100" id="lavarPlatos" name="lavarPlatos">
+            <input class="espacio" type="number" placeholder="valor del 1 al 100" id="lavarPlatos" name="lavarPlatos">
             <div id="resultadoPlatos"></div>
           </div>
-          <div>
+          <div class="cuadro">
             <label for="limpiarBano">Limpiar el baño</label>
-            <input type="number" placeholder="valor del 1 al 100" id="limpiarBano" name="limpiarBano">
+            <input class="espacio" type="number" placeholder="valor del 1 al 100" id="limpiarBano" name="limpiarBano">
             <div id="resultadoBano"></div>
           </div>
-          <div>
+          <div class="cuadro">
             <label for="cocinar">Cocinar</label>
-            <input type="number" placeholder="valor del 1 al 100" id="cocinar" name="cocinar">
+            <input class="espacio" type="number" placeholder="valor del 1 al 100" id="cocinar" name="cocinar">
             <div id="resultadoCocina"></div>
           </div>
-          <div>
+          <div class="cuadro">
             <label for="barrer">Barrer</label>
-            <input type="number" placeholder="valor del 1 al 100" id="barrer" name="barrer">
+            <input class="espacio" type="number" placeholder="valor del 1 al 100" id="barrer" name="barrer">
             <div id="resultadoBarrer"></div>
           </div>
-          <div>
+          <div class="cuadro">
             <label for="hacerCama">Hacer la cama</label>
-            <input type="number" placeholder="valor del 1 al 100" id="hacerCama" name="hacerCama">
+            <input class="espacio" type="number" placeholder="valor del 1 al 100" id="hacerCama" name="hacerCama">
             <div id="resultadoCama"></div>
           </div>
-          <div>
+          <div class="cuadro">
             <label for="basura">Sacar la basura</label>
-            <input type="number" placeholder="valor del 1 al 100" id="basura" name="basura">
+            <input class="espacio" type="number" placeholder="valor del 1 al 100" id="basura" name="basura">
             <div id="resultadoBasura"></div>
           </div>
-          <div id="resultados"></div>
-          <div>
-            <label for="personas">¿Cuantas personas viven en la casa?</label>
-            <input type="number" placeholder="" id="personas" name="personas">
-            <div id="resultadoMiembro0"></div>
-          </div>
-          <div>
-            <input type="submit" id="cargar" value="Cargar">
-          </div>
-          <div id="divMiembro1"></div>
-          <div id="divMiembro2"></div>
-          <div id="divMiembro3"></div>
-          <div id="divMiembro4"></div>
-          <div id="botonMiembros"></div>
-          <section id="quienHizo">
+        </form>
+          <div class="null" id="resultados"></div>
+        <section id="section2" class="sec1">
+            <div class="cuadro">
+              <label for="personas">¿Cuantas personas viven en la casa?</label>
+              <input class="espacio" type="number" placeholder="" id="personas" name="personas">
+              <div id="resultadoMiembro0"></div>
+            </div>
+            <div>
+              <input class="boton" type="submit" id="cargar" value="Cargar">
+            </div>
+          <form id="formulario2" action="" class="form">
+            <div id="divMiembro1"></div>
+            <div id="divMiembro2"></div>
+            <div id="divMiembro3"></div>
+            <div id="divMiembro4"></div>
+          </form>
+            <div id="botonMiembros"></div>
+        </section>
+        <section class="sec2">
+          <div class="null" id="resultadoMiembro1"></div>
+          <div class="null" id="resultadoMiembro2"></div>
+          <div class="null" id="resultadoMiembro3"></div>
+          <div class="null" id="resultadoMiembro4"></div>
+        </section>
+          <section id="quienHizo" class="form">
           </section>
           <div id="asignarTareas"></div>
           <p id="puntuacionDiaria"></p>
-        </form>
     </section>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./js/main.js"></script>

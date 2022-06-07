@@ -1,0 +1,26 @@
+[
+{
+    "nombre": "Lavar los platos", 
+    "valor": 0
+},
+{
+    "nombre": "Limpiar el baño", 
+    "valor": 0
+},
+{
+    "nombre": "Cocinar", 
+    "valor":0
+},
+{
+    "nombre":"Barrer",
+    "valor":0
+},
+{
+    "nombre":"Hacer la cama",
+    "valor":0
+},
+{
+    "nombre":"Sacar la basura",
+    "valor":0
+}
+]
