@@ -25,16 +25,13 @@ const resultadoMiembro0 = document.getElementById("resultadoMiembro0");
 const resultados = document.getElementById("resultados")
 let usuarios = [{},{},{},{}];
 let tareas = [{},{},{},{},{},{}];
-console.log(tareas)
 const cargarTareasJSON = ()=>{
     fetch("json/datos.json")
         .then((res)=>{
-            console.log(res)
             return res.json()
         })
         .then((datos)=>{
             tareas = datos
-            console.log(tareas)
         })
         .catch((err)=>{
             console.log(err)
@@ -127,7 +124,6 @@ function cargarValores(evt){
             Swal.fire(puntuacionDiaria)
             const usuariosJSON = JSON.stringify(usuarios);
             localStorage.setItem("usuarios", usuariosJSON);
-            console.log(usuarios)
         }
     }
 }
