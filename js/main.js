@@ -24,6 +24,7 @@ const resultadoMiembro4 = document.getElementById("resultadoMiembro4");
 const resultadoMiembro0 = document.getElementById("resultadoMiembro0");
 const resultados = document.getElementById("resultados")
 let usuarios = [{},{},{},{}];
+let usuariosViejos = [{},{},{},{}]
 let tareas = [{},{},{},{},{},{}];
 const cargarTareasJSON = ()=>{
     fetch("json/datos.json")
@@ -40,6 +41,11 @@ const cargarTareasJSON = ()=>{
 const cargar = document.getElementById("cargar");
 LavarPlatosTarea.addEventListener("click", cargarTareasJSON);
 cargar.addEventListener("click", cargarValores);
+document.addEventListener("DOMContentLoaded", function(){
+    if (localStorage.getItem("usuarios") != null) {
+        usuariosViejos = JSON.parse(localStorage.getItem("usuarios"));
+    }
+})
 
 function cargarValores(evt){
     evt.preventDefault();
